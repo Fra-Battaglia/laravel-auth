@@ -17,7 +17,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						@foreach ($projects as $item)
+						@forelse ($projects as $item)
 							<tr>
 								<td class="px-3">{{ $item['id'] }}</td>
 								<td>{{ $item['title'] }}</td>
@@ -33,7 +33,15 @@
 									</form>
 								</td>
 							</tr>
-						@endforeach
+						@empty
+						<tr class="bg-transparent border-0">
+							<td colspan="7" class="text-center p-0 border-0 bg-transparent">
+								<div class="m-0 my-4 d-flex justify-content-center align-items-center">
+									<div class="alert alert-warning m-0">Nessun progetto, <a href="{{ route('admin.projects.create') }}">clicca qui</a> per crearne uno</div>
+								</div>
+							</td>
+						</tr>	
+						@endforelse
 					</tbody>
 				</table>
 			</div>
